@@ -1,0 +1,9 @@
+(leftFoot LEFT_FOOT)
+(rightFoot RIGHT_FOOT)
+
+(preconds
+	(nothing-on leftFoot)
+	(nothing-on rightFoot))
+(effects
+	(shoe-on leftFoot)
+	(shoe-on rightFoot))

@@ -1,0 +1,30 @@
+(operator
+  RIGHT-SHOE
+  (params (<ob1> RIGHT_FOOT))
+  (preconds 
+	(sock-on <ob1>))
+  (effects 
+	(shoe-on <ob1>)))
+(operator
+  RIGHT-SOCK
+  (params (<ob1> RIGHT_FOOT))
+  (preconds 
+	(nothing-on <ob1>))
+  (effects 
+	(sock-on <ob1>)))
+(operator
+  LEFT-SHOE
+  (params (<ob1> LEFT_FOOT))
+  (preconds 
+	(sock-on <ob1>))
+  (effects 
+	(shoe-on <ob1>)))
+(operator
+  LEFT-SOCK
+  (params (<ob1> LEFT_FOOT))
+  (preconds 
+	(nothing-on <ob1>))
+  (effects 
+	(sock-on <ob1>)))
+
+
