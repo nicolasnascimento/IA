@@ -1,0 +1,31 @@
+(operator
+  PICK-UP-TOP
+  (params (<ob1> PIECE) (<ob2> PIECE) (<tx> TOWER) (<hand> HAND))
+  (preconds
+	(not-empty <tx>) (on <ob1> <ob2>) (free <ob1>) (unused <hand>))
+  (effects 
+	(on-air <ob1>) (free <ob2>) (used <hand>)))
+
+(operator
+  PICK-UP-LAST
+  (params (<ob1> PIECE) (<tx> TOWER) (<hand> HAND))
+  (preconds
+	(not-empty <tx>) (free <ob1>) (on <ob1> <tx>) (unused <hand>))
+  (effects 
+	(on-air <ob1>) (empty <tx>) (used <hand>)))
+
+(operator
+  PUT-ON-FIRST
+  (params (<ob1> PIECE) (<tx> TOWER) (<hand> HAND))
+  (preconds
+	(on-air <ob1>) (empty <tx>) (used <hand>))
+  (effects 
+	(not-empty <tx>) (free <ob1>) (on <ob1> <tx>) (unused <hand>)))
+
+(operator
+  PUT-ON-TOP
+  (params (<ob1> PIECE) (<ob2> PIECE) (<tx> TOWER) (<hand> HAND))
+  (preconds
+	(not-empty <tx>) (free <ob2>) (minor <ob1> <ob2>) (used <hand>))
+  (effects 
+	(on <ob1> <ob2>) (not-free <ob2>) (unused <hand>)))
