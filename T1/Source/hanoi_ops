@@ -4,7 +4,7 @@
   (preconds
 	(not-empty <tx>) (on <ob1> <ob2>) (free <ob1>) (unused <hand>))
   (effects 
-	(on-air <ob1>) (free <ob2>) (used <hand>)))
+	(on-air <ob1>) (not-free <ob1>) (del on <ob1> <ob2>) (del free <ob1>) (free <ob2>) (used <hand>) (del unused <hand>)))
 
 (operator
   PICK-UP-LAST
@@ -12,20 +12,20 @@
   (preconds
 	(not-empty <tx>) (free <ob1>) (on <ob1> <tx>) (unused <hand>))
   (effects 
-	(on-air <ob1>) (empty <tx>) (used <hand>)))
+	(on-air <ob1>) (not-free <ob1>) (del not-empty <tx>) (empty <tx>) (del on <ob1> <tx>) (del free <ob1>) (used <hand>) (del unused <hand>)))
 
 (operator
   PUT-ON-FIRST
   (params (<ob1> PIECE) (<tx> TOWER) (<hand> HAND))
   (preconds
-	(on-air <ob1>) (empty <tx>) (used <hand>))
+	(on-air <ob1>) (empty <tx>) (used <hand>) (not-free <ob1>) )
   (effects 
-	(not-empty <tx>) (free <ob1>) (on <ob1> <tx>) (unused <hand>)))
+	(not-empty <tx>) (del on-air <ob1>) (del empty <tx>) (free <ob1>) (del not-free <ob1>) (on <ob1> <tx>) (unused <hand>) (del used <hand>)))
 
 (operator
   PUT-ON-TOP
   (params (<ob1> PIECE) (<ob2> PIECE) (<tx> TOWER) (<hand> HAND))
   (preconds
-	(not-empty <tx>) (free <ob2>) (minor <ob1> <ob2>) (used <hand>))
+	(not-empty <tx>) (on-air <ob1>) (free <ob2>) (not-free <ob1>) (minor <ob1> <ob2>) (used <hand>))
   (effects 
-	(on <ob1> <ob2>) (not-free <ob2>) (unused <hand>)))
+	(on <ob1> <ob2>) (not-free <ob2>) (del free <ob2>) (del on-air <ob1>) (free <ob1>) (del not-free <ob1>) (unused <hand>) (del used <hand>)))
